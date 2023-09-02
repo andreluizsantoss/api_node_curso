@@ -29,5 +29,4 @@ usersRouter.patch(
    upload.single('avatar'),
 usersAvatarController.update);
 
-
 export default usersRouter;
