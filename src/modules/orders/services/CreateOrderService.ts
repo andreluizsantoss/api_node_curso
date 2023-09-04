@@ -33,7 +33,7 @@ class CreateOrderService {
 
     const existsProductsIds = existsProducts.map(product => product.id);
     const checkInexistentProducts = products.filter(
-      product => !existsProductsIds.includes(parseInt(product.id)),
+      product => !existsProductsIds.includes(product.id),
     );
     if (checkInexistentProducts.length) {
       throw new AppError(
@@ -43,7 +43,7 @@ class CreateOrderService {
 
     const quantityAvailable = products.filter(
       product =>
-        existsProducts.filter(p => p.id === parseInt(product.id))[0].quantity <
+        existsProducts.filter(p => p.id === product.id)[0].quantity <
         product.quantity,
     );
     if (quantityAvailable.length) {
@@ -56,7 +56,7 @@ class CreateOrderService {
     const serializedProducts = products.map(product => ({
       product_id: product.id,
       quantity: product.quantity,
-      price: existsProducts.filter(p => p.id === parseInt(product.id))[0].price,
+      price: existsProducts.filter(p => p.id === product.id)[0].price,
     }));
 
     const order = await orderRepository.createOrder({
@@ -68,12 +68,12 @@ class CreateOrderService {
 
     const updatedProductQuantity = order_products.map(product => ({
       id: product.product_id,
-      // quantity:
-      //   existsProducts.filter(p => p.id === product.id)[0].quantity -
-      //   product.quantity,
+      quantity:
+        existsProducts.filter(p => p.id === product.product_id)[0].quantity -
+        product.quantity,
     }));
 
-    // await productRepository.save(updatedProductQuantity);
+    await productRepository.save(updatedProductQuantity);
 
     return order;
   }

@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Up
 @Entity('products')
 class Product {
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  id: string;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.product)
   order_products: OrdersProducts[];
