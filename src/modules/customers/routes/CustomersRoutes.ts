@@ -1,14 +1,14 @@
-import { Router } from 'express';
-import { celebrate, Joi, Segments } from 'celebrate';
-import CustomersController from '../controllers/CustomersController';
-import isAuthenticated from '@shared/middlewares/IsAuthenticated';
+import { Router } from 'express'
+import { celebrate, Joi, Segments } from 'celebrate'
+import CustomersController from '../controllers/CustomersController'
+import isAuthenticated from '@shared/middlewares/IsAuthenticated'
 
-const customersRouter = Router();
-const customersController = new CustomersController();
+const customersRouter = Router()
+const customersController = new CustomersController()
 
-customersRouter.use(isAuthenticated);
+customersRouter.use(isAuthenticated)
 
-customersRouter.get('/', customersController.index);
+customersRouter.get('/', customersController.index)
 
 customersRouter.get(
   '/:id',
@@ -18,7 +18,7 @@ customersRouter.get(
     },
   }),
   customersController.show,
-);
+)
 
 customersRouter.post(
   '/',
@@ -29,7 +29,7 @@ customersRouter.post(
     },
   }),
   customersController.create,
-);
+)
 
 customersRouter.put(
   '/:id',
@@ -43,7 +43,7 @@ customersRouter.put(
     },
   }),
   customersController.update,
-);
+)
 
 customersRouter.delete(
   '/:id',
@@ -53,6 +53,6 @@ customersRouter.delete(
     },
   }),
   customersController.delete,
-);
+)
 
-export default customersRouter;
+export default customersRouter

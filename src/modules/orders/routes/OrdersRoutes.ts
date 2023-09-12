@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import { celebrate, Joi, Segments } from 'celebrate';
-import OrdersController from '../controllers/OrdersController';
-import isAuthenticated from '@shared/middlewares/IsAuthenticated';
+import { Router } from 'express'
+import { celebrate, Joi, Segments } from 'celebrate'
+import OrdersController from '../controllers/OrdersController'
+import isAuthenticated from '@shared/middlewares/IsAuthenticated'
 
-const ordersRouter = Router();
-const ordersController = new OrdersController();
+const ordersRouter = Router()
+const ordersController = new OrdersController()
 
-ordersRouter.use(isAuthenticated);
+ordersRouter.use(isAuthenticated)
 
 ordersRouter.get(
   '/:id',
@@ -16,7 +16,7 @@ ordersRouter.get(
     },
   }),
   ordersController.show,
-);
+)
 
 ordersRouter.post(
   '/',
@@ -27,6 +27,6 @@ ordersRouter.post(
     },
   }),
   ordersController.create,
-);
+)
 
-export default ordersRouter;
+export default ordersRouter

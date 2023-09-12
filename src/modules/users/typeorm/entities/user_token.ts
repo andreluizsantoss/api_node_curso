@@ -1,22 +1,29 @@
-import { Column, CreateDateColumn, Entity, Generated, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Generated,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 
 @Entity('user_tokens')
 class UserToken {
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  id: number
 
   @Column()
   @Generated('uuid')
-  token: string;
+  token: string
 
   @Column()
-  user_id: string;
+  user_id: string
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at: Date
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at: Date
 }
 
-export default UserToken;
+export default UserToken
