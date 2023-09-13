@@ -1,5 +1,5 @@
-import { EntityRepository, Repository } from 'typeorm'
-import User from '../entities/user'
+import { EntityRepository, Repository } from 'typeorm';
+import User from '../entities/user';
 
 @EntityRepository(User)
 class UserRepository extends Repository<User> {
@@ -8,9 +8,9 @@ class UserRepository extends Repository<User> {
       where: {
         name,
       },
-    })
+    });
 
-    return user
+    return user;
   }
 
   public async findById(id: string): Promise<User | undefined> {
@@ -18,9 +18,9 @@ class UserRepository extends Repository<User> {
       where: {
         id,
       },
-    })
+    });
 
-    return user
+    return user;
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
@@ -28,10 +28,10 @@ class UserRepository extends Repository<User> {
       where: {
         email,
       },
-    })
+    });
 
-    return user
+    return user;
   }
 }
 
-export default UserRepository
+export default UserRepository;
